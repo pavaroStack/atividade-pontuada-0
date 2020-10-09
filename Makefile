@@ -3,8 +3,8 @@
 
 all:	testSort
 
-testSort:  testSort.o sortAlgs.o
-	g++ -o $@ $^
+testSort:  testSort.cpp 
+	g++ $@ $^ && ./testSort
 
 clean:
 	rm testSort *.o
