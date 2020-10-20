@@ -3,38 +3,34 @@
 #include <fstream>
 #include <iostream>
 
+
+#include "sorting.h"
+
+
 using namespace std;
 
-string getFileArray(string fileName, (vector<string> pivList){
-  string line;
-  ifstream myfile (fileName);
-  if (myfile.is_open())
-  {
-    int i = 0;
-    string teste="test";
-    while ( getline (myfile,line) )
-    {
-      pivList.push_back(line);
-      cout << line << " " << i++ << '\n';
-    }
-    myfile.close();
-    return pivList;
-  }
-  else
-  {
-    cout<<
-          "Arquivo não abriu"
-                             <<endl;
-    return NULL;
-  }
-}//pega valores do arquivo database com todas as placas
+
+void display(vector<string> vect){            // Função de display para título de demonstração do funcionamento do código
+  for (unsigned int i = 0; i < vect.size(); i++)
+        cout << vect.at(i) << " ";
+  cout<<endl;
+}
+
+/*
+   * Aplicação do algoritmo de ordenação escolhido (radixSort), de ordem O(n+k) em que k representa a quantidade de repetições da rotina, portanto, a quantidade de elementos em um termo desse vector é 7 (quantidade de letras e números nas placas), foi escolhido por ser um algoritmo de ordem linear e estável, ou seja, no melhor caso ele tem o comportamento O(n+k) tal qual no pior e no caso médio.
+*/
+
 int main(){
-  string myFile = "database.txt";
-  vector<string> pivList = getFileArray(myFile, (vector<string>) pivList);
+  string myFile = "database.txt";             // Nome do arquivo a ser lido
+  vector<string> pivVect;                     // Vector de strings que guardará os dados de database
 
 
-  /*
-   * Aplicação do radixSort!!
-   */
+  getFileArray(myFile, pivVect);              // Função que pega os dados de database.txt (mais explicações sobre funcionamento em sorting.cpp)
+
+  cout<< "Lista antes de estar ordenada: " <<endl;
+  display(pivVect);
+  cout<< "Lista depois de estar ordenada: " <<endl;
+  radixSort(pivVect);                         // Algoritmo de ordenação (mais explicações sobre funcionamento em sorting.cpp)
+  display(pivVect);
   return 0;
 }

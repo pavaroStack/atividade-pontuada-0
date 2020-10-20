@@ -1,2 +1,2 @@
 language = "cpp"
-run = "g++ -o testSort testSort.cpp sortAlgs.cpp"
+run = "g++ -c sorting.cpp && g++ -c testSort.cpp && g++ -o testSort testSort.o sorting.o && ./testSort"

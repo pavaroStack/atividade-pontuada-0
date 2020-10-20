@@ -1,10 +1,12 @@
 .cpp.o:	$*.h
-	g++	-c $*.cpp
+	g++	-Wall -c $*.cpp
 
-all:	testSort
+all:	testSort 
 
-testSort:  testSort.cpp 
-	g++ $@ $^ && ./testSort
+testSort:	testSort.o sorting.o
+	g++ -o $@ $^
+
 
 clean:
-	rm testSort *.o
+	rm *.o TADExample 
+	
